@@ -104,6 +104,29 @@ namespace Practice28_2
 
 
         }
+        [Test]
+        public void CheckCartIsEmty()
+        {
+            Login();
+            IWebElement viewedShopingCart = driver.FindElement(By.XPath("/html/body/div[@class='navbar navbar-default']/div[@class='container']/ul[@class='nav navbar-nav navbar-right']/li[1]/a"));
+            if (viewedShopingCart.Displayed && viewedShopingCart.Enabled)
+            {
+                viewedShopingCart.Click();
+
+            }
+            IWebElement alert = driver.FindElement(By.XPath("/html/body/div[@class='alert alert-warning']"));
+            if (alert.Displayed && alert.Enabled)
+            {
+                Assert.Pass();
+
+            }
+            else
+            {
+                Assert.Fail("Test nije prosao'");
+            }
+            
+
+        }
 
 
 
