@@ -16,7 +16,7 @@ namespace Practice28_2
         private string TestData_Password = "SuperSnaznaSifra123"; //UsefulFunction.RandomPassword();
         private string TestData_Username = "korisnickoIme";
 
-        [Test]
+       [Test]
       public void Registration()
        {
             IWebElement register = driver.FindElement(By.XPath("//div[@class='col-sm-6 text-center'][2]/a"));
@@ -70,8 +70,44 @@ namespace Practice28_2
             }
             System.Threading.Thread.Sleep(4000);
         }
+        [Test]
+        public void Login()
+        {
 
-      [SetUp]
+            IWebElement SignINBUtton = driver.FindElement(By.XPath("/html/body/div[@class='container']/div[@class='row'][3]/div[@class='col-sm-6 text-center'][1]/a"));
+            if (SignINBUtton.Displayed && SignINBUtton.Enabled)
+            {
+                SignINBUtton.Click();
+
+            }
+            System.Threading.Thread.Sleep(4000);
+
+            IWebElement formSignIN = driver.FindElement(By.Name("username"));
+            if (formSignIN.Displayed && formSignIN.Enabled)
+            {
+                formSignIN.SendKeys(TestData_Username);
+
+            }
+            IWebElement passwordSignIn = driver.FindElement(By.Name("password"));
+            if (passwordSignIn.Displayed && passwordSignIn.Enabled)
+            {
+                passwordSignIn.SendKeys(TestData_Password);
+
+            }
+            IWebElement loginButton = driver.FindElement(By.Name("login"));
+            if (loginButton.Displayed && loginButton.Enabled)
+            {
+                loginButton.Click();
+
+            }
+            System.Threading.Thread.Sleep(4000);
+
+
+        }
+
+
+
+        [SetUp]
       public void SetUp()
       {
 
